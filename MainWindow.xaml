@@ -1,0 +1,150 @@
+﻿<Window x:Class="formularzXaml.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:formularzXaml"
+        mc:Ignorable="d"
+        Title="Formularz rejestracyjny" Height="680" Width="480"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        Background="#F0F4FF">
+
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="18"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.ColumnSpan="2"
+                Background="#3A5BA0" CornerRadius="8" Padding="0,10">
+            <TextBlock Text="Formularz rejestracyjny"
+                       FontSize="20" FontWeight="Bold"
+                       Foreground="White" HorizontalAlignment="Center"/>
+        </Border>
+
+        <Label Grid.Row="2" Grid.Column="0"
+               Content="Imię:"
+               Foreground="#3A5BA0" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="1"
+                 x:Name="txtImie"
+                 Height="28" Padding="6,4"
+                 BorderBrush="#7B9CDE" BorderThickness="1.5"
+                 Background="White" Foreground="#2C2C2C"/>
+
+        <Label Grid.Row="4" Grid.Column="0"
+               Content="Nazwisko:"
+               Foreground="#3A5BA0" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="4" Grid.Column="1"
+                 x:Name="txtNazwisko"
+                 Height="28" Padding="6,4"
+                 BorderBrush="#7B9CDE" BorderThickness="1.5"
+                 Background="White" Foreground="#2C2C2C"/>
+
+        <Label Grid.Row="6" Grid.Column="0"
+               Content="E-mail:"
+               Foreground="#3A5BA0" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="6" Grid.Column="1"
+                 x:Name="txtEmail"
+                 Height="28" Padding="6,4"
+                 BorderBrush="#7B9CDE" BorderThickness="1.5"
+                 Background="White" Foreground="#2C2C2C"/>
+
+        <Label Grid.Row="8" Grid.Column="0"
+               Content="Hasło:"
+               Foreground="#3A5BA0" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <PasswordBox Grid.Row="8" Grid.Column="1"
+                     x:Name="pbHaslo"
+                     Height="28" Padding="6,4"
+                     BorderBrush="#7B9CDE" BorderThickness="1.5"
+                     Background="White" Foreground="#2C2C2C"/>
+
+        <Label Grid.Row="10" Grid.Column="0"
+               Content="Płeć:"
+               Foreground="#3A5BA0" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="10" Grid.Column="1"
+                    Orientation="Horizontal" VerticalAlignment="Center">
+            <RadioButton x:Name="rbMezczyzna" Content="Mężczyzna"
+                         Foreground="#2C2C2C" Margin="0,0,16,0"/>
+            <RadioButton x:Name="rbKobieta" Content="Kobieta"
+                         Foreground="#2C2C2C"/>
+        </StackPanel>
+
+        <Label Grid.Row="12" Grid.Column="0"
+               Content="Kraj:"
+               Foreground="#3A5BA0" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="12" Grid.Column="1"
+                  x:Name="cbKraj"
+                  Height="28"
+                  BorderBrush="#7B9CDE" BorderThickness="1.5"
+                  Background="White" Foreground="#2C2C2C">
+            <ComboBoxItem Content="Polska"/>
+            <ComboBoxItem Content="Niemcy"/>
+            <ComboBoxItem Content="Francja"/>
+            <ComboBoxItem Content="Wielka Brytania"/>
+            <ComboBoxItem Content="Inne"/>
+        </ComboBox>
+
+        <Label Grid.Row="14" Grid.Column="0"
+               Content="Data urodzenia:"
+               Foreground="#3A5BA0" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <DatePicker Grid.Row="14" Grid.Column="1"
+                    x:Name="dpDataUrodzenia"
+                    Height="28"
+                    BorderBrush="#7B9CDE" BorderThickness="1.5"
+                    Background="White" Foreground="#2C2C2C"
+                    SelectedDateChanged="dpDataUrodzenia_SelectedDateChanged"/>
+
+        <Label Grid.Row="16" Grid.Column="0"
+               Content="O mnie:"
+               Foreground="#3A5BA0" FontWeight="SemiBold" VerticalAlignment="Top"
+               Margin="0,6,0,0"/>
+        <TextBox Grid.Row="16" Grid.Column="1"
+                 x:Name="txtOpis"
+                 Height="90" Padding="6,4"
+                 BorderBrush="#7B9CDE" BorderThickness="1.5"
+                 Background="White" Foreground="#2C2C2C"
+                 TextWrapping="Wrap" AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Auto"
+                 MaxLength="300"
+                 TextChanged="txtOpis_TextChanged"/>
+
+        <StackPanel Grid.Row="18" Grid.ColumnSpan="2"
+                    Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="btnZatwierdz"
+                    Content="Zarejestruj"
+                    Width="110" Height="32" Margin="0,0,8,0"
+                    Background="#3A5BA0" Foreground="White"
+                    BorderThickness="0" Cursor="Hand"
+                    Click="btnZatwierdz_Click"/>
+            <Button x:Name="btnWyczysc"
+                    Content="Wyczyść"
+                    Width="90" Height="32"
+                    Background="#E0E7F5" Foreground="#3A5BA0"
+                    BorderBrush="#7B9CDE" BorderThickness="1.5"
+                    Cursor="Hand"
+                    Click="btnWyczysc_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
