@@ -58,7 +58,8 @@ namespace formularzXaml
             if (string.IsNullOrWhiteSpace(txtImie.Text) ||
                 string.IsNullOrWhiteSpace(txtNazwisko.Text) ||
                 string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                pbHaslo.Password.Length == 0)
+                pbHaslo.Password.Length == 0 ||
+                string.IsNullOrWhiteSpace(txtOpis.Text))
             {
                 MessageBox.Show("Wypełnij wszystkie wymagane pola.", "Błąd",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -88,10 +89,22 @@ namespace formularzXaml
                 return;
             }
 
-            string plec = rbMezczyzna.IsChecked == true ? "Mężczyzna" :
-                          rbKobieta.IsChecked == true   ? "Kobieta"   : "Nie wybrano";
+            if (rbMezczyzna.IsChecked == false && rbKobieta.IsChecked == false)
+            {
+                MessageBox.Show("Wybierz płeć.", "Błąd",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
-            string kraj = (cbKraj.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "Nie wybrano";
+            if (cbKraj.SelectedIndex <= 0)
+            {
+                MessageBox.Show("Wybierz kraj.", "Błąd",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            string plec = rbMezczyzna.IsChecked == true ? "Mężczyzna" : "Kobieta";
+            string kraj = ((ComboBoxItem)cbKraj.SelectedItem).Content.ToString()!;
 
             var sb = new StringBuilder();
             sb.AppendLine($"Imię:           {txtImie.Text}");
@@ -100,8 +113,7 @@ namespace formularzXaml
             sb.AppendLine($"Płeć:           {plec}");
             sb.AppendLine($"Kraj:           {kraj}");
             sb.AppendLine($"Data urodzenia: {data:dd.MM.yyyy}");
-            if (!string.IsNullOrWhiteSpace(txtOpis.Text))
-                sb.AppendLine($"O mnie:         {txtOpis.Text}");
+            sb.AppendLine($"O mnie:         {txtOpis.Text}");
 
             MessageBox.Show(sb.ToString(), "Zarejestrowano pomyślnie",
                 MessageBoxButton.OK, MessageBoxImage.Information);
@@ -113,13 +125,13 @@ namespace formularzXaml
             txtNazwisko.Clear();
             txtEmail.Clear();
             pbHaslo.Clear();
-            rbMezczyzna.IsChecked   = false;
-            rbKobieta.IsChecked     = false;
-            cbKraj.SelectedIndex    = -1;
+            rbMezczyzna.IsChecked        = false;
+            rbKobieta.IsChecked          = false;
+            cbKraj.SelectedIndex         = 0;
             dpDataUrodzenia.SelectedDate = null;
-            dpDataUrodzenia.BorderBrush = new SolidColorBrush(Color.FromRgb(0x7B, 0x9C, 0xDE));
+            dpDataUrodzenia.BorderBrush  = new SolidColorBrush(Color.FromRgb(0x7B, 0x9C, 0xDE));
             txtOpis.Clear();
-            txtOpis.BorderBrush = new SolidColorBrush(Color.FromRgb(0x7B, 0x9C, 0xDE));
+            txtOpis.BorderBrush          = new SolidColorBrush(Color.FromRgb(0x7B, 0x9C, 0xDE));
         }
     }
 }

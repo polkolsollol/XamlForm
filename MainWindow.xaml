@@ -98,7 +98,9 @@
                   x:Name="cbKraj"
                   Height="28"
                   BorderBrush="#7B9CDE" BorderThickness="1.5"
-                  Background="White" Foreground="#2C2C2C">
+                  Background="White" Foreground="#2C2C2C"
+                  SelectedIndex="0">
+            <ComboBoxItem Content="-- wybierz kraj --" IsEnabled="False"/>
             <ComboBoxItem Content="Polska"/>
             <ComboBoxItem Content="Niemcy"/>
             <ComboBoxItem Content="Francja"/>
